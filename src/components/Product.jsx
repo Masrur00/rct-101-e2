@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "@chakra-ui/react";
+// import { Text } from "@chakra-ui/react";
 
 const Product = (props) => {
   let { imageSrc, gender, category, title, price } = props.prod;
@@ -14,7 +14,7 @@ const Product = (props) => {
   // const TagLabel = () => <div />;
   // console.log(title, price);
   return (
-    <div data-cy="product">
+    <div className="eac-prod" data-cy="product">
       <img data-cy="product-image" src={imageSrc} alt="" />
       <div className="">
         <p data-cy="product-category">{category}</p>
