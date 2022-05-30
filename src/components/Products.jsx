@@ -16,16 +16,16 @@ const Products = () => {
   // const Grid = () => <div />;
 
   useEffect(() => {
+    const getData = async () => {
+      let res = await axios.get(
+        `http://localhost:8585/products?_limit=${limit}&_page=${page}`
+      );
+      console.log(res.data);
+      setProducts(res.data);
+    };
     getData();
   }, [page, limit]);
 
-  const getData = async () => {
-    let res = await axios.get(
-      `http://localhost:8585/products?_limit=${limit}&_page=${page}`
-    );
-    console.log(res.data);
-    setProducts(res.data);
-  };
   return (
     <div className="prods-pg">
       {/* <AddProduct /> */}
