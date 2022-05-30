@@ -1,8 +1,10 @@
 import React from "react";
+import Products from "./components/Products";
 
 const App = () => {
-  return <div>{/* TODO: Code here */}
-  <h2>My name is khan</h2>
+  return <div>
+    <Products/>
+  {/* <h2>My name is khan</h2> */}
   </div>;
 };
 
