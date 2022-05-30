@@ -1,33 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AddProduct from "./AddProduct";
 import Pagination from "./Pagination";
 import Product from "./Product";
+import { Grid, GridItem } from "@chakra-ui/react";
 // import { Box, Flex, Spacer } from "@chakra-ui/react";
 import { Box, Center, Flex, Square, Text } from "@chakra-ui/react";
+import axios from "axios";
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(3);
   // TODO: Remove below const and instead import them from chakra
   // const Flex = () => <div />;
   // const Grid = () => <div />;
 
+  useEffect(() => {
+    getData();
+  }, [page, limit]);
+
+  const getData = async () => {
+    let res = await axios.get(
+      `http://localhost:8585/products?_limit=${limit}&_page=${page}`
+    );
+    console.log(res.data);
+    setProducts(res.data);
+  };
   return (
-    <Flex color="white">
-      <Center w="100px" bg="green.500">
-        <Text>Box 1</Text>
-      </Center>
-      <Square bg="blue.500" size="150px">
-        <Text>Box 2</Text>
-      </Square>
-      <Box flex="1" bg="tomato">
-        <Text>Box 3</Text>
-      </Box>
-      {/*
-       <AddProduct />
-      <Grid>
-       <Product/>
-      </Grid>      
-      <Pagination /> */}
-    </Flex>
+    <div className="prods-pg">
+      <AddProduct />
+
+      {products.map((prod) => (
+        <Product key={prod.id} prod={prod} />
+      ))}
+
+      <Pagination setLimit={setLimit} setPage={setPage} />
+    </div>
   );
 };
 
