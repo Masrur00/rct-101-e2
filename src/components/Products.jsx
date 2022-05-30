@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import AddProduct from "./AddProduct";
+// import AddProduct from "./AddProduct";
 import Pagination from "./Pagination";
 import Product from "./Product";
-import { Grid, GridItem } from "@chakra-ui/react";
+// import { Grid, GridItem } from "@chakra-ui/react";
 // import { Box, Flex, Spacer } from "@chakra-ui/react";
-import { Box, Center, Flex, Square, Text } from "@chakra-ui/react";
+// import { Box, Center, Flex, Square, Text } from "@chakra-ui/react";
 import axios from "axios";
 
 const Products = () => {
@@ -28,7 +28,7 @@ const Products = () => {
   };
   return (
     <div className="prods-pg">
-      <AddProduct />
+      {/* <AddProduct /> */}
 
       {products.map((prod) => (
         <Product key={prod.id} prod={prod} />
